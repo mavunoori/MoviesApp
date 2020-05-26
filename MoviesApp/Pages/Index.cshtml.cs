@@ -18,7 +18,7 @@ namespace MoviesApp.Pages
             this.movieService = movieService;
         }
 
-       public IList<Movie> Movies;
+        public IList<Movie> Movies;
         public void OnGet()
         {
             Movies = movieService.GetMovies();
