@@ -11,17 +11,24 @@ namespace MoviesApp.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly IMovieService movieService;
+        //private readonly IMovieService movieService;
 
-        public IndexModel(IMovieService movieService)
+        //public IndexModel(IMovieService movieService)
+        //{
+        //    this.movieService = movieService;
+        //}
+
+        public IndexModel(ApplicationDbContext dbContext)
         {
-            this.movieService = movieService;
+            this.dbContext = dbContext;
         }
 
         public IList<Movie> Movies;
+        private readonly ApplicationDbContext dbContext;
+
         public void OnGet()
         {
-            Movies = movieService.GetMovies();
+            Movies = dbContext.Movies.ToList();
         }
     }
 }
